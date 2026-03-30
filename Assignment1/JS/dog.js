@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
     // Get dog ID from URL query parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const dogId = urlParams.get('id');
+    const dogId = getDogIdFromURL();
 
     if (!dogId) {
         document.body.innerHTML = "<h1>Dog not found</h1>";
@@ -21,16 +20,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         const dog = await response.json();
         console.log("DOG:", dog);
 
-        // Function to convert boolean/null to Yes/No/Unknown
-        function formatBoolean(value) {
-            if (value === true) return "Yes";
-            if (value === false) return "No";
-            if (value === null || value === undefined) return "Unknown";
-            return value;
-        }
-
         // Populate the page with dog data
-        document.getElementById('hero-image').src = dog.first_image_url;
+        const heroImage = document.getElementById('hero-image');
+        const loader = document.getElementById('image-loader');
+        heroImage.onload = () => {
+            loader.style.display = 'none';
+            heroImage.style.display = 'block';
+        };
+        heroImage.src = dog.first_image_url;
         document.getElementById('dog-name').textContent = dog.name;
         document.getElementById('dog-breed').textContent = dog.breed;
         document.getElementById('dog-age').textContent = dog.age;
@@ -39,6 +36,24 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById('dog-house-trained').textContent = formatBoolean(dog.house_trained);
         document.getElementById('dog-neutered').textContent = formatBoolean(dog.neutered);
         document.getElementById('dog-story').textContent = dog.story;
+
+        document.getElementById('adopt-btn').href = `adopt.html?id=${dogId}`;
+
+        const LAST_ID = 6;
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        if (dogId == 1) {
+            prevBtn.style.display = 'none';
+        } else {
+            prevBtn.onclick = () => window.location.href = `dog.html?id=${dogId - 1}`;
+        }
+
+        if (dogId == LAST_ID) {
+            nextBtn.style.display = 'none';
+        } else {
+            nextBtn.onclick = () => window.location.href = `dog.html?id=${parseInt(dogId) + 1}`;
+        }
 
     } catch (error) {
         console.error("REAL ERROR:", error);

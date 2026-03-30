@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/adopt.css">
+    <script src="../JS/script.js"></script>
+    <script src="../JS/adopt.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="dog-preview">
+            <div id="image-loader" class="image-loader"></div>
+            <img id="dog-image" src="" alt="Dog Image" style="display:none">
+            <h1 id="page-heading"></h1>
+        </div>
+
+        <form id="adopt-form" class="adopt-form" novalidate>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="you@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="full-name" required placeholder="Jane Doe">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required placeholder="+1 555 000 0000">
+            </div>
+
+            <button type="submit" class="submit-btn">Send</button>
+        </form>
+    </div>
+</body>
+</html>
