@@ -3,42 +3,45 @@ document.addEventListener("DOMContentLoaded", async () => {
         const response = await fetch("https://b9eaadf5-f4ee-4983-98ca-63eb6d424e0c.mock.pstmn.io/dogs");
         const dogs = await response.json();
 
-        const container = document.getElementById("dog-list-container");
+        const cards = document.querySelectorAll(".dog-card");
 
-        dogs.forEach(dog => {
-            const card = document.createElement("div");
-            card.className = "dog-card";
+        dogs.forEach((dog, i) => {
+            if (cards[i]) {
+                const card = cards[i];
+                const img = card.querySelector(".dog-image");
+                const name = card.querySelector(".dog-name");
+                const link = card.querySelector(".more-info-link");
+                const loader = card.querySelector(".card-image-loader");
 
-            const loader = document.createElement("div");
-            loader.className = "card-image-loader";
+                if (name) name.textContent = dog.name;
+                if (link) link.href = `dog.html?id=${dog.id}`;
+                
+                if (img) {
+                    img.src = dog.first_image_url;
+                    img.style.display = "none"; 
+                    if (loader) loader.style.display = "block";
 
-            const img = document.createElement("img");
-            img.className = "dog-image";
-            img.alt = "Dog Image";
-            img.style.display = "none";
-            img.onload = () => {
-                loader.style.display = "none";
-                img.style.display = "block";
-            };
-            img.src = dog.first_image_url;
+                    img.onload = () => {
+                        if (loader) loader.style.display = "none";
+                        img.style.display = "block";
+                    };
+                }
 
-            const name = document.createElement("h2");
-            name.className = "dog-name";
-            name.textContent = dog.name;
+                if (!card.querySelector(".heart-btn")) {
+                    const heartBtn = document.createElement("button");
+                    heartBtn.className = "heart-btn";
+                    heartBtn.innerHTML = "❤";
 
-            const link = document.createElement("a");
-            link.className = "more-info-link";
-            link.href = `dog.html?id=${dog.id}`;
-            link.textContent = "More Info";
+                    heartBtn.onclick = (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        heartBtn.classList.toggle("liked");
+                    };
 
-            card.appendChild(loader);
-            card.appendChild(img);
-            card.appendChild(name);
-            card.appendChild(link);
-
-            container.appendChild(card);
+                    card.appendChild(heartBtn);
+                }
+            }
         });
-
     } catch (error) {
         console.error("Error:", error);
     }

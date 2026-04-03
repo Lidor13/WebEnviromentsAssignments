@@ -16,6 +16,7 @@ h1 {
 }
 
 .dog-card {
+    position: relative;
     background-color: #fff;
     border-radius: 12px;
     padding: 12px;
@@ -64,4 +65,34 @@ h1 {
 
 .more-info-link:hover {
     background-color: #6a4678;
+}
+
+.heart-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9); 
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    
+    color: #ccc; 
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.heart-btn.liked {
+    color: #e74c3c;
+    content: "❤"; 
+}
+
+.heart-btn:active {
+    transform: scale(0.9);
 }

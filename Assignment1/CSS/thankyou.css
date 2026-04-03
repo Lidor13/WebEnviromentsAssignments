@@ -60,3 +60,17 @@ h1 {
 .home-btn:hover {
     background-color: #6a4678;
 }
+
+#confetti-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../Images/confetti.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    pointer-events: none; 
+    z-index: 1000;
+    opacity: 0.3;
+}
