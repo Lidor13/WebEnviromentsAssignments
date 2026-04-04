@@ -29,8 +29,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
         console.error("Error loading dog data:", error);
     }
-    function getDogIdFromURL() {
-        const params = new URLSearchParams(window.location.search);
-        return params.get('id');
-    }
 });
