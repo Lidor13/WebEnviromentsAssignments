@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             heroImage.style.display = 'block';
         };
         heroImage.src = dog.first_image_url;
-        document.getElementById('dog-name').textContent = dog.name;
+        document.getElementById('dog-name').textContent = `${dog.name} Details`;
         document.getElementById('dog-breed').textContent = dog.breed;
         document.getElementById('dog-age').textContent = dog.age;
         document.getElementById('dog-gender').textContent = dog.sex;

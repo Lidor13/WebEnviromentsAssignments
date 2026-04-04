@@ -67,7 +67,7 @@ h1 {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('../Images/confetti.gif');
+    background-image: url('confetti.gif');
     background-size: cover;
     background-repeat: no-repeat;
     pointer-events: none; 
