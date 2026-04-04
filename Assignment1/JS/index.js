@@ -32,10 +32,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                     heartBtn.className = "heart-btn";
                     heartBtn.innerHTML = "❤";
 
+                    const storageKey = `liked_dog_${dog.id}`;
+                    if (localStorage.getItem(storageKey) === "true") {
+                        heartBtn.classList.add("liked");
+                    }
+
                     heartBtn.onclick = (e) => {
                         e.preventDefault();
                         e.stopPropagation();
                         heartBtn.classList.toggle("liked");
+                        localStorage.setItem(storageKey, heartBtn.classList.contains("liked"));
                     };
 
                     card.appendChild(heartBtn);
