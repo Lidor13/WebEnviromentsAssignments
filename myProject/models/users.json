@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Liel Levinger",
+      "email": "liel@example.com",
+      "age": 26,
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Lidor Maimon",
+      "email": "lidor@example.com",
+      "age": 26,
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "name": "Dan Katz",
+      "email": "dan@example.com",
+      "age": 30,
+      "role": "user"
+    },
+    {
+      "id": 4,
+      "name": "Tomer Lavi",
+      "email": "tomer@example.com",
+      "age": 45,
+      "role": "manager"
+    }
+  ]
+}
